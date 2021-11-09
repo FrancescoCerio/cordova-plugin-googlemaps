@@ -85,6 +85,15 @@ For browser platform,
 
 ## Install optional variables (config.xml)
 
+
+  - ![](https://raw.githubusercontent.com/mapsplugin/cordova-plugin-googlemaps/master/images/icon-android.png) **APP_COMPAT_VERSION = (1.1.0)**<br>
+  **PLAY_SERVICES_BASEMENT_VERSION = (17.2.1)**<br>
+  **PLAY_SERVICES_BASE_VERSION = (17.2.1)**<br>
+  **PLAY_SERVICES_GCM_VERSION = (17.0.0)**<br>
+  **PLAY_SERVICES_LOCATION_VERSION = (17.0.0)**<br>
+  **GOOGLE_MAPS_ANDROID_SDK = (maps-sdk-3.0.0-beta)**<br>
+    cordova-plugin-googlemaps version 2.8.0 or later uses [Maps SDK for Android v.3](https://developers.google.com/maps/documentation/android-sdk/v3-client-migration).
+
   - ![](https://raw.githubusercontent.com/mapsplugin/cordova-plugin-googlemaps/master/images/icon-android.png) **GOOGLE_MAPS_PLAY_SERVICES_VERSION = (16.0.1)**<br>
     The Google Play Services SDK version.
     _You need to specify the same version number with all other plugins._
@@ -113,8 +122,22 @@ For browser platform,
 
 ## Release Notes
 
+
   - **v2.7.1**
     - Fix: (iOS) UiWebView references present in v2.7.0
+    
+    - Important Change: (Android)
+      If `android.useAndroidX=true` and `android.enableJetifier=true` are defined in `gradle.properties`,
+      this plugin uses [Maps SDK for Android v.3.0.0 BETA](https://developers.google.com/maps/documentation/android-sdk/v3-client-migration).
+      If no definition, this plugin uses `com.google.android.gms:play-services-maps`
+
+    - Add: (Android/iOS/Browser) `mapOptions.preferences.restriction` which is able to set the camera bounds.
+    - Add: (Android/iOS/Browser) `mapOptions.preferences.clickableIcons` which is able to be disable clicking on POI icons.
+    - Bug fix: (Android/iOS/Browser) `mapOptions.preferences.building` does not work.
+    - Add: (Android/iOS/Browser) ElevationService
+    - Add: (Android/iOS/Browser) DirectionsService and `map.addDirectionsRenderer()`
+    - Change: (Android/iOS/Browser) `map.setDiv()`, `map.setOptions()` returns `Promise`.
+    - Change: (Android/iOS/Browser) Hides `__pluginDomId` and `__pluginMapId` properties.
 
   - **v2.7.0**
     - Re-adoption: <a href="https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk" target="_blank">cordova-plugin-googlemaps-sdk dependency</a>
@@ -140,7 +163,6 @@ For browser platform,
     - Fix: HTMLColor2RGBA() converts to incorrect value
     - Fix: (Android) Can't load marker image from the Internet
     - many bug fixes...
-
 
 ---------------------------------------------------------------------------------------------------------
 
